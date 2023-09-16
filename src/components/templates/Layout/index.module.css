@@ -1,0 +1,10 @@
+.container {
+    margin: 1rem;
+}
+
+.title {
+    text-align: center;
+    overflow-wrap: break-word;
+    margin: 0;
+    color: teal;
+}
