@@ -1,8 +1,9 @@
 import { faker } from "@faker-js/faker";
+import { AiOutlineMenu } from "react-icons/ai";
 import { FaListUl } from "react-icons/fa";
-import { FcMenu } from "react-icons/fc";
 import { MdOutlineComputer } from "react-icons/md";
 import { PiGridFourFill, PiHardDrivesFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 // const Home = () => {
 //   return (
 //     <section>
@@ -120,20 +121,36 @@ const Home = () => {
   return (
     <div>
       <div style={{ textAlign: "end" }}>
-        <FcMenu style={{ fontSize: "1.5rem" }} />
+        <AiOutlineMenu fontSize="2rem" color="#000" />
       </div>
 
       <h1>Explore</h1>
 
       <div style={{ display: "flex", gap: 15 }}>
+        <div
+          style={{
+            width: 70,
+            height: 70,
+            color: "#fff",
+            backgroundColor: "#3d7a65",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "50%",
+            boxShadow:
+              "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
+          }}
+        >
+          ALL
+        </div>
         {[MdOutlineComputer, PiHardDrivesFill].map((Icon, index) => (
           <div
             key={index}
             style={{
-              width: 75,
-              height: 75,
-              color: "#fff",
-              backgroundColor: "#3d7a65",
+              width: 70,
+              height: 70,
+              color: "#000",
+              backgroundColor: "#eeeeee",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -148,7 +165,7 @@ const Home = () => {
       </div>
 
       <div style={{ display: "flex", marginTop: "2rem" }}>
-        <div style={{ flex: 1 }}>xxxx products</div>
+        <div style={{ flex: 1 }}>10 produits</div>
         <div style={{ display: "flex", gap: 10 }}>
           <FaListUl fontSize="1.2rem" />
           <PiGridFourFill fontSize="1.2rem" />
@@ -157,11 +174,15 @@ const Home = () => {
 
       <div>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
-          <div
+          <Link
+            to={`details/${index}`}
             key={index}
             style={{
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
               marginTop: "2rem",
+              display: "block",
+              textDecoration: "none",
+              color: "#000000",
             }}
           >
             <img src={faker.image.url()} alt="" style={{ width: "100%" }} />
@@ -171,7 +192,7 @@ const Home = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

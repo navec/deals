@@ -1,4 +1,5 @@
 import Layout from "components/templates/Layout";
+import Detail from "pages/Details";
 import Home from "pages/Home";
 import { Link, Route, Routes } from "react-router-dom";
 
@@ -7,8 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="details/:id" element={<Detail />} />
 
         {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -20,22 +20,6 @@ function App() {
 }
 
 export default App;
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
 
 function NoMatch() {
   return (
