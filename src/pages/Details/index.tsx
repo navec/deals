@@ -1,10 +1,76 @@
 import { faker } from "@faker-js/faker";
-import { AiFillHeart, AiFillStar } from "react-icons/ai";
+import { Collection, getOneDoc } from "config/queries";
+import { useEffect, useState } from "react";
+import { AiOutlineWhatsApp } from "react-icons/ai";
+import { FaMoneyBillWave } from "react-icons/fa";
 import { HiArrowNarrowLeft } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+type Product = {
+  id: string;
+  name: string;
+  price: number;
+  state: string;
+  summary: string;
+  description: string;
+  stock: number;
+};
+
+const useQuery = <T extends object>(
+  collection: Collection,
+  documentId: string
+) => {
+  const [state, setState] = useState<{
+    data: null | T;
+    error: undefined;
+    isError: boolean;
+    isLoading: boolean;
+    isFetched: boolean;
+  }>({
+    data: null,
+    error: undefined,
+    isError: false,
+    isLoading: false,
+    isFetched: false,
+  });
+
+  useEffect(() => {
+    if (!state.isFetched) {
+      setState((previous) => ({ ...previous, isLoading: true }));
+
+      getOneDoc(collection, documentId)
+        .then((data: any) => setState((previous) => ({ ...previous, data })))
+        .catch((error: any) => {
+          setState((previous) => ({ ...previous, error, isError: true }));
+        })
+        .finally(() => {
+          setState((previous) => ({
+            ...previous,
+            isLoading: false,
+            isFetched: true,
+          }));
+        });
+    }
+  }, [collection, state.isFetched, documentId]);
+
+  return state;
+};
 
 const Detail = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { data, isLoading, isError, isFetched } = useQuery<Product>(
+    Collection.PRODUCTS,
+    id!
+  );
+
+  if (isLoading || !isFetched) {
+    return <>Loading...</>;
+  }
+
+  if (isError || !data) {
+    return <>Error...</>;
+  }
 
   const goBack = () => navigate(-1);
   return (
@@ -41,7 +107,8 @@ const Detail = () => {
         >
           <HiArrowNarrowLeft fontSize="1.3rem" />
         </span>
-        <span
+        <a
+          href="tel:+242666666666"
           style={{
             width: 40,
             height: 40,
@@ -52,8 +119,8 @@ const Detail = () => {
             borderRadius: "50%",
           }}
         >
-          <AiFillHeart fontSize="1.3rem" />
-        </span>
+          <AiOutlineWhatsApp style={{ fontSize: "1.5rem", color: "#000000" }} />
+        </a>
       </div>
       <img
         src={faker.image.url()}
@@ -70,25 +137,48 @@ const Detail = () => {
           paddingBottom: "3rem",
         }}
       >
-        <h1 style={{ fontSize: "1.5rem", margin: "0 0 5px 0" }}>
-          Lorem ipsum dolor
-        </h1>
+        <h1 style={{ fontSize: "1.5rem", margin: "0 0 5px 0" }}>{data.name}</h1>
+        <div style={{ marginTop: "2rem", color: "#777777" }}>
+          {data.summary}
+        </div>
 
         <div
-          style={{ display: "flex", gap: 5, color: "#3d7a65", fontWeight: 500 }}
+          style={{
+            display: "flex",
+            gap: "0.5rem",
+            color: "#3d7a65",
+            fontWeight: 500,
+            marginTop: "3rem",
+            fontSize: "1.5rem",
+            alignItems: "center",
+          }}
         >
-          <AiFillStar />
-          <span>4,5 (15 reviews)</span>
+          <FaMoneyBillWave />
+          <span>{data.price} fr</span>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "0.5rem",
+            fontWeight: 500,
+            color: "#777777",
+          }}
+        >
+          <span>QUANTITÉ(S)</span>
+          <span>{data.stock} ps</span>
         </div>
 
         <div>
-          <h4 style={{ marginBottom: "0.5rem" }}>Details</h4>
-          <span style={{ color: "#777777" }}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia modi
-            sint totam pariatur doloremque error provident quis facere commodi,
-            incidunt harum, dignissimos earum temporibus iure inventore.
-            Distinctio mollitia id dolore?
-          </span>
+          <h3 style={{ margin: "2.5rem 0 0.5rem" }}>
+            {"Details".toUpperCase()}
+          </h3>
+          {/* <span style={{ color: "#777777" }}> */}
+          <div
+            style={{ color: "#777777" }}
+            dangerouslySetInnerHTML={{ __html: data.description }}
+          />
+          {/* </span> */}
         </div>
       </div>
     </div>
