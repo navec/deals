@@ -8,7 +8,7 @@ body {
   height: 100%;
   position: relative;
   min-height: 100vh;
-  background-color: #ebebeb;
+  /* background-color: #ebebeb; */
 }
 
 code {

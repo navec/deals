@@ -1,25 +1,18 @@
+import { Menu } from "components/organisms/Menu";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.css";
 
-// const navigations = [
-//   { link: "/", name: "Home" },
-//   { link: "/contact", name: "Contact" },
-// ];
-
 const Layout = () => (
-  <div className={styles.container}>
-    {/* <nav className="menu">
-      <ul>
-      {navigations.map(({ link, name }) => (
-        <li key={name.toLowerCase()}>
-        <Link to={link}>{name}</Link>
-        </li>
-        ))}
-        </ul>
-      </nav> */}
+  <>
+    <header className={styles.header}>
+      <Menu />
+      <nav style={{ position: "absolute" }}></nav>
+    </header>
 
-    <Outlet />
-  </div>
+    <main>
+      <Outlet />
+    </main>
+  </>
 );
 
 export default Layout;
