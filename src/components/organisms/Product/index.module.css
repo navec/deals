@@ -1,0 +1,57 @@
+.layout {
+  position: relative;
+  padding: 0 1rem 
+}
+
+.tag {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  padding: 0.5rem 1rem;
+  background: #2fb5d2;
+  color: #fff;
+  font-weight: 300;
+  font-size: 10px;
+  text-transform: capitalize;
+}
+
+.image {
+  width: 100%;
+  height: 411px;
+  object-fit: cover 
+}
+
+.category {
+  text-transform: uppercase,;
+  letter-spacing: 1;
+  color: #919191;
+}
+
+.name {
+  text-transform: uppercase;
+  margin: 5px 0;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Harmonia Sans Pro Cyr";
+}
+
+
+.link {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 2rem;
+  display: block;
+  text-decoration: none;
+  color: #000000;
+}
+
+.priceAndStock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.priceAndStock > div {
+  color: #222;
+  font-weight: 700;
+  font-family: "Harmonia Sans Pro Cyr";
+  font-size: 1rem;
+}
