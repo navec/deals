@@ -1,23 +1,21 @@
-.title {
-  margin: 0;
-  padding: 2rem 1rem 0;
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  flex-wrap: wrap;
-  line-height: 2rem;
+.listContainer {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(calc((100% - 4rem) / 4), 1fr));
+  gap: 2rem 1.5rem;
+  padding: 1rem;
+  max-width: 1280px;
+  margin: 2rem auto 0;
 }
 
-.titleActive {
-  position: relative;
-}
+@media (max-width: 768px) { 
+  .listContainer {
+    grid-template-columns: repeat(3, minmax(calc((100% - 3rem) / 3), 1fr));
+  }
+ }
 
-.titleActive:before {
-  content: "";
-  background: #3d7a65;
-  position: absolute;
-  width: 50%;
-  height: 4px;
-  bottom: -5px;
-  left: 0;
-}
+ @media (max-width: 425px) { 
+   .listContainer {
+    grid-template-columns: repeat(1, minmax(calc((100% - 1rem) / 1), 1fr));
+    gap: 2rem 0;
+   }
+  }

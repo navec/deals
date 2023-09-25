@@ -1,3 +1,16 @@
+.layout {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: calc(100% - 2rem);
+}
+
+.img {
+  width: 100%;
+  height: 320px;
+ object-fit: cover;
+}
+
 .navigationArrow {
   position: absolute;
   top: 45%;
@@ -23,3 +36,23 @@
   display: inline-block;
   border-radius: 8px;
 }
+
+.miniature {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  overflow: auto;
+  max-width: 1280px;
+  margin: 1.5rem auto;
+  width: calc(100% - 2rem);
+}
+
+.miniature > li {
+  margin-right: 1rem;
+}
+
+.slider {
+  margin: 0 1rem;
+}
+
+

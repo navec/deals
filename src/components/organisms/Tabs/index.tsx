@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { List } from "../List";
 import { Product, ProductProps } from "../Product";
 import { TabTitles } from "../TabTitle";
+import styles from "./index.module.css";
 
 type TabbedContentProps = {
   tabs: { title: string; products: ProductProps[] }[];
@@ -21,7 +22,9 @@ export const Tabs: FC<TabbedContentProps> = ({ tabs }) => {
         selectTabIndex={setTabIndex}
         tabIndex={tabIndex}
       />
-      <List items={products} />
+      <div className={styles.listContainer}>
+        <List items={products} />
+      </div>
     </>
   );
 };

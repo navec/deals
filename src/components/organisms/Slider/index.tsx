@@ -27,8 +27,10 @@ export const Slider: FC<SliderProps> = ({
 
   return (
     <>
-      <section style={{ position: "relative" }} className={className}>
-        <img src={src} alt={alt} style={{ width: "100%", maxWidth: 425 }} />
+      <section
+        className={className ? `${styles.layout} ${className}` : styles.layout}
+      >
+        <img src={src} alt={alt} className={styles.img} />
         <div className={styles.navigationArrow}>
           <MdArrowBackIosNew
             onClick={prevSlide}
@@ -53,18 +55,9 @@ export const Slider: FC<SliderProps> = ({
         </div>
       </section>
       {withMinature && (
-        <ul
-          style={{
-            listStyle: "none",
-            margin: "1.5rem 1rem",
-            padding: 0,
-            display: "flex",
-            gap: 10,
-            overflow: "hidden",
-          }}
-        >
-          {slides.map((slide) => (
-            <li>
+        <ul className={styles.miniature}>
+          {slides.map((slide, index) => (
+            <li key={slide.src} onClick={() => selectSlide(index)}>
               <img src={slide.src} alt={slide.alt} height={100} />
             </li>
           ))}

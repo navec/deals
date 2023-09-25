@@ -3,6 +3,34 @@
   object-fit: cover;
 }
 
-.slider {
-  margin: 0 1rem;
+.title {
+  margin: 4rem auto 1rem;
+  font-size: 30px;
+  text-transform: none;
+  font-weight: 400;
+  color: #222;
+  font-family: Harmonia Sans Pro Cyr;
+  max-width: 1280px;
+  padding: 0px 1rem;
+}
+
+.priceWhatsApp {
+  padding: 0px 1rem;
+  color: #222;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: 'Barlow Condensed,sans-serif';
+  line-height: 1.1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+@media (max-width: 1280px) { 
+  .slider {
+    margin: 0 1rem!important;
+  }
+
 }

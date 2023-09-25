@@ -1,23 +1,33 @@
 .layout {
   position: relative;
-  padding: 0 1rem 
 }
 
 .tag {
   position: absolute;
-  top: 1rem;
-  left: 2rem;
-  padding: 0.5rem 1rem;
-  background: #2fb5d2;
+  top: 1.5rem;
+  left: 1rem;
   color: #fff;
   font-weight: 300;
   font-size: 10px;
   text-transform: capitalize;
 }
 
+.tag > * {
+  padding: 0.5rem 1rem;
+}
+
+.new {
+  background-color: #2fb5d2;
+  margin-right: 8px;
+}
+
+.best {
+  background-color: #3d7a65;
+}
+
 .image {
   width: 100%;
-  height: 411px;
+  height: 250px;
   object-fit: cover 
 }
 
@@ -33,12 +43,14 @@
   font-size: 1rem;
   font-weight: 400;
   font-family: "Harmonia Sans Pro Cyr";
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
 .link {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-top: 2rem;
   display: block;
   text-decoration: none;
   color: #000000;
@@ -54,4 +66,33 @@
   font-weight: 700;
   font-family: "Harmonia Sans Pro Cyr";
   font-size: 1rem;
+}
+
+.iconCta {
+  position: absolute;
+  text-decoration: none;
+  bottom: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3rem;
+  background-color: #ffffffcc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-size: 1.7rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 50%;
+}
+
+.iconCta:hover,
+.iconCta:active,
+.iconCta:focus {
+  background-color: #ffffff;
+  color: #25D366;
+}
+
+.description {
+  padding: 0.5rem;
 }

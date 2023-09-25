@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { MdWhatsapp } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { getFirstImage } from "./helper/getFistImage";
 import styles from "./index.module.css";
@@ -13,22 +14,37 @@ export type ProductProps = {
   description: string;
   stock: number;
   images: { src: string; alt: string }[];
+  tags: string[];
 };
 
-export const Product: FC<ProductProps> = (props) => {
-  const { src, alt } = getFirstImage(props.images, props.category, props.name);
+export const Product: FC<ProductProps> = (data) => {
+  const { src, alt } = getFirstImage(data.images, data.category, data.name);
 
   return (
-    <article key={props.id} className={styles.layout}>
-      <Link to={`details/${props.id}`} className={styles.link}>
-        <div className={styles.tag}>new</div>
+    <article key={data.id} className={styles.layout}>
+      <Link
+        to="https://api.whatsapp.com/send?phone=+33665656646"
+        className={styles.iconCta}
+      >
+        <MdWhatsapp />
+      </Link>
+      <Link to={`details/${data.id}`} className={styles.link}>
+        {data.tags && (
+          <div className={styles.tag}>
+            {data.tags.map((tag) => (
+              <span key={tag} className={styles[tag]}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
         <img src={src} alt={alt} className={styles.image} />
-        <div style={{ padding: "0.5rem" }}>
-          <div className={styles.category}>{props.category}</div>
-          <div className={styles.name}>{props.name}</div>
+        <div className={styles.description}>
+          <div className={styles.category}>{data.category}</div>
+          <div className={styles.name}>{data.name}</div>
           <div className={styles.priceAndStock}>
-            <div>{props.price} fr</div>
-            <div>Qté(s): {props.stock} </div>
+            <div>{data.price} fr</div>
+            <div>Qté(s): {data.stock} </div>
           </div>
         </div>
       </Link>

@@ -11,8 +11,19 @@ const slides = [0, 1, 2].map((index) => ({
   alt: `alt name ${index}`,
 }));
 
+const TAG = {
+  BEST: "best",
+  NEW: "new",
+} as const;
+
 const Home = () => {
-  const products = useQuery<Product>(Collection.PRODUCTS);
+  const { data: products } = useQuery<Product>(Collection.PRODUCTS);
+  const bestSellers = products.filter((product) =>
+    product.tags.includes(TAG.BEST)
+  );
+  const newArrivals = products.filter((product) =>
+    product.tags.includes(TAG.NEW)
+  );
 
   return (
     <>
@@ -21,9 +32,9 @@ const Home = () => {
       <section className={styles.products}>
         <Tabs
           tabs={[
-            { title: "Best Sellers", products: products.data },
-            { title: "New Arrivals", products: [] },
-            { title: "Sales Products", products: [] },
+            { title: "Meilleures ventes", products: bestSellers },
+            { title: "Nouveaux arrivés", products: newArrivals },
+            { title: "Tous les produits", products: products },
           ]}
         />
       </section>

@@ -1,11 +1,12 @@
 .title {
-    margin: 0;
     padding: 2rem 1rem 0;
     display: flex;
     gap: 1rem;
     list-style: none;
     flex-wrap: wrap;
     line-height: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
   }
   
   .titleActive {
