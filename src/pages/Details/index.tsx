@@ -81,7 +81,7 @@ const Detail = () => {
       <div className={styles.priceWhatsApp}>
         <div>{data.price} fr</div>
         <Link
-          to="https://api.whatsapp.com/send?phone=+33665656646"
+          to="https://api.whatsapp.com/send?phone=+33623552418"
           style={{ color: "#25D366", fontSize: "2.2rem" }}
         >
           <IoLogoWhatsapp />

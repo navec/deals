@@ -1,6 +1,6 @@
 .slider > img {
   height: 350px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .title {
@@ -33,4 +33,9 @@
     margin: 0 1rem!important;
   }
 
+}
+@media (max-width: 768px) {
+  .slider > .img {
+    object-fit: cover;
+  }
 }

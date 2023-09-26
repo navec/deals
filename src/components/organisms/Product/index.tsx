@@ -23,12 +23,12 @@ export const Product: FC<ProductProps> = (data) => {
   return (
     <article key={data.id} className={styles.layout}>
       <Link
-        to="https://api.whatsapp.com/send?phone=+33665656646"
+        to="https://api.whatsapp.com/send?phone=+33623552418"
         className={styles.iconCta}
       >
         <MdWhatsapp />
       </Link>
-      <Link to={`details/${data.id}`} className={styles.link}>
+      <Link to={`/details/${data.id}`} className={styles.link}>
         {data.tags && (
           <div className={styles.tag}>
             {data.tags.map((tag) => (
