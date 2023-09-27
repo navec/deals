@@ -1,6 +1,7 @@
 import { MobileMenu } from "components/organisms/MobileMenu";
 import { CiSearch } from "react-icons/ci";
 import { Link, Outlet } from "react-router-dom";
+import { ReactComponent as Logo } from "../../images/logo.svg";
 import styles from "./index.module.css";
 
 const Layout = () => (
@@ -11,7 +12,7 @@ const Layout = () => (
     <header className={styles.destopHeader}>
       <nav>
         <Link to="/" className={styles.logo}>
-          Congo Deals
+          <Logo style={{ marginTop: 10, width: 200 }} />
         </Link>
         <ul className={styles.nav}>
           <li className={styles.navItem}>

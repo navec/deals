@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { AiOutlineMenu, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { LinkProps, Link as ReactRouterLink } from "react-router-dom";
+import { ReactComponent as Logo } from "../../images/logo.svg";
 import styles from "./index.module.css";
 
 const Link: FC<LinkProps & { onClose: () => void }> = ({
@@ -19,7 +20,9 @@ export const MobileMenu = () => {
   return (
     <>
       <AiOutlineMenu fontSize="1.5rem" onClick={() => setIsOpen(true)} />
-      <div>Congo Deals</div>
+      <div>
+        <Logo style={{ width: 175 }} />
+      </div>
       <CiSearch fontSize="1.5rem" />
       <div
         onClick={() => setIsOpen(false)}
