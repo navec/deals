@@ -1,7 +1,9 @@
 import { MobileMenu } from "components/organisms/MobileMenu";
 import { ProductProps } from "components/organisms/Product";
+import { Search } from "components/organisms/Search";
 import { Collection } from "config/queries";
 import { useQuery } from "hooks";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { Link, Outlet } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
@@ -9,6 +11,7 @@ import styles from "./index.module.css";
 
 const Layout = () => {
   const { data: products } = useQuery<ProductProps>(Collection.PRODUCTS);
+  const [isOpenSearch, setIsOpenNavSearch] = useState(false);
 
   return (
     <>
@@ -40,7 +43,16 @@ const Layout = () => {
             </li>
           </ul>
           <div style={{ textAlign: "end" }}>
-            <CiSearch fontSize="1.5rem" />
+            <CiSearch
+              fontSize="1.5rem"
+              onClick={() => setIsOpenNavSearch(true)}
+              style={{ cursor: "pointer" }}
+            />
+            <Search
+              isVisible={isOpenSearch}
+              close={() => setIsOpenNavSearch(false)}
+              store={products}
+            />
           </div>
         </nav>
       </header>

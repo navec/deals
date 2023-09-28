@@ -18,7 +18,9 @@ export const Search: FC<SearchProps> = ({ isVisible, close, store }) => {
     if (value.length > 2) {
       setProducts(
         store
-          .filter(({ name }) => name.toLowerCase().search(value) !== -1)
+          .filter(
+            ({ name }) => name.toLowerCase().search(value.toLowerCase()) !== -1
+          )
           .map((item) => <Product key={item.id} {...item} />)
       );
     } else {
