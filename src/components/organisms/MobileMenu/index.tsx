@@ -3,6 +3,8 @@ import { AiOutlineMenu, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { LinkProps, Link as ReactRouterLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
+import { ProductProps as Product } from "../Product";
+import { Search } from "../Search";
 import styles from "./index.module.css";
 
 const Link: FC<LinkProps & { onClose: () => void }> = ({
@@ -10,26 +12,38 @@ const Link: FC<LinkProps & { onClose: () => void }> = ({
   ...props
 }) => <ReactRouterLink onClick={onClose} {...props} />;
 
-export const MobileMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const MobileMenu: FC<{ products: Product[] }> = ({ products }) => {
+  const [isOpenNav, setIsOpenNav] = useState(false);
+  const [isOpenSearch, setIsOpenNavSearch] = useState(false);
   const [selectedSubMenu, setSelectedSubMenu] = useState<string>();
 
-  const onClose = () => setIsOpen(false);
-  console.log(selectedSubMenu === "categorie", selectedSubMenu);
+  const onClose = () => setIsOpenNav(false);
 
   return (
     <>
-      <AiOutlineMenu fontSize="1.5rem" onClick={() => setIsOpen(true)} />
+      <AiOutlineMenu fontSize="1.5rem" onClick={() => setIsOpenNav(true)} />
       <div>
         <Logo style={{ width: 175 }} />
       </div>
-      <CiSearch fontSize="1.5rem" />
+      <div style={{ position: "relative" }}>
+        <CiSearch fontSize="1.5rem" onClick={() => setIsOpenNavSearch(true)} />
+
+        <Search
+          isVisible={isOpenSearch}
+          close={() => setIsOpenNavSearch(false)}
+          store={products}
+        />
+      </div>
       <div
-        onClick={() => setIsOpen(false)}
-        className={isOpen ? `${styles.layout} ${styles.active}` : styles.layout}
+        onClick={() => setIsOpenNav(false)}
+        className={
+          isOpenNav ? `${styles.layout} ${styles.active}` : styles.layout
+        }
       />
       <nav
-        className={isOpen ? `${styles.layout} ${styles.active}` : styles.layout}
+        className={
+          isOpenNav ? `${styles.layout} ${styles.active}` : styles.layout
+        }
       >
         <div className={styles.title}>Congo Deals</div>
         <ul>
