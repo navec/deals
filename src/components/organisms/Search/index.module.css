@@ -17,7 +17,6 @@
   visibility: visible;
   opacity: 1;
   height: 100%;
-  padding-top: 90px;
   filter: alpha(opacity=100);
   transform: scaleY(1);
 }
@@ -31,7 +30,7 @@
   font-size: 35px;
   font-weight: 400;
   border-bottom: 2px solid #222;
-  margin-bottom: 50px;
+  margin-bottom: 1rem;
 }
 
 .input:focus {
@@ -46,4 +45,9 @@
   border: none;
   cursor: pointer;
   background: transparent;
+}
+
+.searchList {
+  overflow: auto;
+  height: calc(100% - 220px);
 }

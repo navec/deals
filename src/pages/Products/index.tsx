@@ -5,7 +5,10 @@ import { useQuery } from "hooks";
 
 const Products = () => {
   const { data } = useQuery<ProductProps>(Collection.PRODUCTS);
-  const products = data.map((item) => <Product key={item.id} {...item} />);
+  const products = data
+    .filter((product) => product?.isActive)
+    .map((item) => <Product key={item.id} {...item} />);
+
   return <List items={products} />;
 };
 

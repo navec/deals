@@ -9,7 +9,7 @@ const NewArrivals = () => {
   const { data } = useQuery<ProductProps>(Collection.PRODUCTS);
 
   const products = data
-    .filter((product) => product.tags.includes(NEW))
+    .filter((product) => product?.isActive && product.tags.includes(NEW))
     .map((item) => <Product key={item.id} {...item} />);
 
   return <List items={products} />;

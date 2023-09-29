@@ -28,6 +28,11 @@ export const Search: FC<SearchProps> = ({ isVisible, close, store }) => {
     }
   }, [value, store]);
 
+  useEffect(() => {
+    const overflow = isVisible && document ? "hidden" : "auto";
+    document.body.style.overflow = overflow;
+  }, [isVisible]);
+
   return (
     <div
       className={
@@ -38,9 +43,9 @@ export const Search: FC<SearchProps> = ({ isVisible, close, store }) => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          margin: "0 auto",
           padding: "0 15px",
           alignItems: "center",
+          margin: "90px auto 0",
         }}
       >
         <span
@@ -80,7 +85,11 @@ export const Search: FC<SearchProps> = ({ isVisible, close, store }) => {
           <div></div>
         </div>
       </div>
-      {!!products.length && <List items={products} />}
+      {!!products.length && (
+        <div className={styles.searchList}>
+          <List items={products} />
+        </div>
+      )}
       {value.length > 2 && !products.length && (
         <div style={{ margin: "0 auto", width: "calc(100% - 2rem)" }}>
           Aucun produit trouvé

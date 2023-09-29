@@ -16,7 +16,9 @@ const Layout = () => {
   return (
     <>
       <header className={styles.mobileHeader}>
-        <MobileMenu products={products} />
+        <MobileMenu
+          products={products.filter((product) => product?.isActive)}
+        />
       </header>
       <header className={styles.destopHeader}>
         <nav>
@@ -28,7 +30,7 @@ const Layout = () => {
               <Link to="/">Acceuil</Link>
             </li>
             <li className={styles.navItem}>
-              <span>Catégorie</span>
+              <span>Catégories</span>
               <ul className={styles.subNav}>
                 <li>
                   <Link to="/meilleures-ventes">Meilleures ventes</Link>

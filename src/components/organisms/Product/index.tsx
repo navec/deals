@@ -15,6 +15,7 @@ export type ProductProps = {
   stock: number;
   images: { src: string; alt: string }[];
   tags: string[];
+  isActive: boolean;
 };
 
 export const Product: FC<ProductProps> = (data) => {

@@ -9,7 +9,7 @@ const BestSellers = () => {
   const { data } = useQuery<ProductProps>(Collection.PRODUCTS);
 
   const products = data
-    .filter((product) => product.tags.includes(BEST))
+    .filter((product) => product?.isActive && product.tags.includes(BEST))
     .map((item) => <Product key={item.id} {...item} />);
 
   return <List items={products} />;

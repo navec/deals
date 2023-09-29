@@ -18,10 +18,12 @@ const TAG = {
 
 const Home = () => {
   const { data: products } = useQuery<Product>(Collection.PRODUCTS);
-  const bestSellers = products.filter((product) =>
+  const activeProducts = products.filter((item) => item.isActive);
+
+  const bestSellers = activeProducts.filter((product) =>
     product.tags.includes(TAG.BEST)
   );
-  const newArrivals = products.filter((product) =>
+  const newArrivals = activeProducts.filter((product) =>
     product.tags.includes(TAG.NEW)
   );
 
@@ -32,9 +34,9 @@ const Home = () => {
       <section className={styles.products}>
         <Tabs
           tabs={[
+            { title: "Tous les produits", products: activeProducts },
             { title: "Meilleures ventes", products: bestSellers },
             { title: "Nouveaux arrivés", products: newArrivals },
-            { title: "Tous les produits", products: products },
           ]}
         />
       </section>

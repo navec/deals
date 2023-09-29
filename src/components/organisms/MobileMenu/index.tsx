@@ -58,7 +58,7 @@ export const MobileMenu: FC<{ products: Product[] }> = ({ products }) => {
                 setSelectedSubMenu((prev) => (prev ? undefined : "categorie"))
               }
             >
-              <span>Catégorie</span>
+              <span>Catégories</span>
               {selectedSubMenu === "categorie" ? (
                 <AiOutlineMinus />
               ) : (
